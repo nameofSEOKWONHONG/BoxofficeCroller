@@ -110,10 +110,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\05.Common\MovieYes24Library\Yes24MovieAPI.ExtLib.csproj">
-      <Project>{4f84ec6c-3022-49a5-a3d0-a18c5ab76f7c}</Project>
-      <Name>Yes24MovieAPI.ExtLib</Name>
-    </ProjectReference>
+    
+    
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!--<Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
