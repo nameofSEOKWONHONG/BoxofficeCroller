@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
-using Yes24MovieAPI.ExtLib.Library;
 
 namespace BoxOfficeCroller
 {
@@ -21,11 +20,11 @@ namespace BoxOfficeCroller
 
                 using (var scope = new TransactionScope(TransactionScopeOption.RequiresNew, tranoptions))
                 {
-                    using (var master = new EfRepository<BOXOFFICE_MASTER>(new DbContext()))
+                    using (var master = new EfRepository<BOXOFFICE_MASTER>(new BoxofficeDbContext()))
                     {
                         master.Add(boxOfficeMaster);
 
-                        using (var detail = new EfRepository<BOXOFFICE_DETAIL>(new DbContext()))
+                        using (var detail = new EfRepository<BOXOFFICE_DETAIL>(new BoxofficeDbContext()))
                         {
                             foreach (var boxOfficeDetail in boxOfficeMaster.BoxOfficeDetails)
                             {
@@ -57,7 +56,7 @@ namespace BoxOfficeCroller
 
         public BOXOFFICE_MASTER GetBoxOfficeMaster(string regDt)
         {
-            using(var context = new DbContext())
+            using(var context = new BoxofficeDbContext())
             {
                 return context.TA_NEO_BOXOFFICE_MASTER.Where(m => m.REG_DT == regDt).FirstOrDefault();
             }

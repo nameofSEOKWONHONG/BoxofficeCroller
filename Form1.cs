@@ -38,7 +38,7 @@ namespace BoxOfficeCroller
             };
             this.Controls.Add(_browser);
 
-            _browser.IsBrowserInitializedChanged += OnIsBrowserInitializedChanged;
+            _browser.IsBrowserInitializedChanged += _browser_IsBrowserInitializedChanged; ;
             _browser.LoadingStateChanged += OnLoadingStateChanged;
             _browser.ConsoleMessage += OnBrowserConsoleMessage;
             _browser.StatusMessage += OnBrowserStatusMessage;
@@ -50,6 +50,11 @@ namespace BoxOfficeCroller
 
             this.FormClosing += Form1_FormClosing;
 
+        }
+
+        private void _browser_IsBrowserInitializedChanged(object sender, EventArgs e)
+        {
+            var b = ((ChromiumWebBrowser)sender);
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -272,14 +277,6 @@ namespace BoxOfficeCroller
             }
 
             return strDay;
-        }
-
-        private void OnIsBrowserInitializedChanged(object sender, IsBrowserInitializedChangedEventArgs e)
-        {
-            if (e.IsBrowserInitialized)
-            {
-                var b = ((ChromiumWebBrowser)sender);
-            }
         }
     }
 }

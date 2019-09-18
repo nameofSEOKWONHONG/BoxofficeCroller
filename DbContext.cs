@@ -5,9 +5,9 @@ namespace BoxOfficeCroller
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class DbContext : DbContext
+    public partial class BoxofficeDbContext : DbContext
     {
-        public DbContext()
+        public BoxofficeDbContext()
             : base("name=DbContext")
         {
             Database.ExecuteSqlCommand("SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;");
